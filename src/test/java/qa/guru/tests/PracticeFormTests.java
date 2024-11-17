@@ -118,7 +118,7 @@ class PracticeFormTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @ValueSource(strings = {
             "5553535",
-            "09123245213",
+            "+09123245213",
             "12345!7890"
     })
     @Tags({

@@ -32,6 +32,7 @@ public class TextBoxTests extends TestBase {
         var permanentAddress = getRandomAddress();
 
         textBoxPage.openPage()
+                .removeBanners()
                 .setName(firstName)
                 .setEmail(email)
                 .setCurrentAddress(currentAddress)

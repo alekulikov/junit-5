@@ -1,6 +1,7 @@
 package qa.guru.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import qa.guru.pages.components.CalendarComponent;
 import qa.guru.pages.components.TableComponent;
 
@@ -30,6 +31,7 @@ public class PracticeFormPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     TableComponent resultsTable = new TableComponent();
 
+    @Step("Открыть страницу")
     public PracticeFormPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
@@ -37,6 +39,7 @@ public class PracticeFormPage {
         return this;
     }
 
+    @Step("Убрать баннеры")
     public PracticeFormPage removeBanners() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -44,36 +47,42 @@ public class PracticeFormPage {
         return this;
     }
 
+    @Step("Заполнить имя")
     public PracticeFormPage setFirstName(String value) {
         firstNameInput.setValue(value);
 
         return this;
     }
 
+    @Step("Заполнить фамилию")
     public PracticeFormPage setLastName(String value) {
         lastNameInput.setValue(value);
 
         return this;
     }
 
+    @Step("заполнить email")
     public PracticeFormPage setEmail(String value) {
         userEmailInput.setValue(value);
 
         return this;
     }
 
+    @Step("Выбрать пол")
     public PracticeFormPage setGender(String value) {
         genderWrapper.$(byText(value)).click();
 
         return this;
     }
 
+    @Step("Заполнить номер телефона")
     public PracticeFormPage setUserNumber(String value) {
         userNumberInput.setValue(value);
 
         return this;
     }
 
+    @Step("Заполнить дату рождения")
     public PracticeFormPage setDateOfBirth(LocalDate birthday) {
         calendarInput.click();
         calendarComponent.setDate(String.format("%02d", birthday.getDayOfMonth()),
@@ -83,30 +92,35 @@ public class PracticeFormPage {
         return this;
     }
 
+    @Step("Добавить предмет")
     public PracticeFormPage setSubject(String subject) {
         subjectsInput.setValue(subject).pressEnter();
 
         return this;
     }
 
+    @Step("Выбрать хобби")
     public PracticeFormPage setHobby(String hobby) {
         hobbiesWrapper.$(byText(hobby)).click();
 
         return this;
     }
 
+    @Step("Загрузить изображение")
     public PracticeFormPage setPicture(String fileName) {
         uploadPictureControl.uploadFromClasspath(fileName);
 
         return this;
     }
 
+    @Step("Заполнить текущий адрес")
     public PracticeFormPage setCurrentAddress(String currentAddress) {
         currentAddressInput.setValue(currentAddress);
 
         return this;
     }
 
+    @Step("Выбрать штат")
     public PracticeFormPage setState(String state) {
         stateComponent.click();
         stateComponent.$(byText(state)).click();
@@ -114,6 +128,7 @@ public class PracticeFormPage {
         return this;
     }
 
+    @Step("Выбрать город")
     public PracticeFormPage setCity(String city) {
         cityComponent.click();
         cityComponent.$(byText(city)).click();
@@ -121,6 +136,7 @@ public class PracticeFormPage {
         return this;
     }
 
+    @Step("Отправить форму")
     public PracticeFormPage submit() {
         submitButton.scrollTo();
         submitButton.click();
@@ -128,18 +144,21 @@ public class PracticeFormPage {
         return this;
     }
 
+    @Step("Полю {key} соответствует значение {value}")
     public PracticeFormPage checkResultValue(String key, String value) {
         resultsTable.checkTableValue(key, value);
 
         return this;
     }
 
+    @Step("Поле {key} не заполнено")
     public PracticeFormPage checkResultValueIsEmpty(String key) {
         resultsTable.checkTableValueIsEmpty(key);
 
         return this;
     }
 
+    @Step("Форма не была заполнена")
     public PracticeFormPage checkResultIsNotVisible() {
         resultsTable.checkTableIsNotVisible();
 

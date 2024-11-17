@@ -1,5 +1,6 @@
 package qa.guru.tests;
 
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,6 +19,10 @@ import java.util.stream.Stream;
 import static qa.guru.model.Gender.*;
 import static qa.guru.utils.RandomUtils.*;
 
+@Feature("Регистрация пользователя")
+@Story("Регистрация пользователя в расширенной форме")
+@Owner("alekulikov")
+@Link(value = "Testing", url = "https://github.com/alekulikov/junit-5")
 class PracticeFormTests extends TestBase {
 
     public PracticeFormPage practiceFormPage = new PracticeFormPage();
@@ -31,6 +36,7 @@ class PracticeFormTests extends TestBase {
         );
     }
 
+    @Severity(SeverityLevel.CRITICAL)
     @MethodSource
     @Tag("WEB")
     @ParameterizedTest(name = "Успешная регистрация с заполнением всех полей - {0}, дата рождения {1}")
@@ -75,6 +81,7 @@ class PracticeFormTests extends TestBase {
                 .checkResultValue("State and City", state + " " + city);
     }
 
+    @Severity(SeverityLevel.BLOCKER)
     @EnumSource(Gender.class)
     @Tags({
             @Tag("SMOKE"),
@@ -108,6 +115,7 @@ class PracticeFormTests extends TestBase {
                 .checkResultValueIsEmpty("State and City");
     }
 
+    @Severity(SeverityLevel.BLOCKER)
     @ValueSource(strings = {
             "5553535",
             "09123245213",

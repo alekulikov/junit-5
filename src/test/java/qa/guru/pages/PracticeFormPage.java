@@ -2,8 +2,6 @@ package qa.guru.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.remote.LocalFileDetector;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import qa.guru.pages.components.CalendarComponent;
 import qa.guru.pages.components.TableComponent;
 
@@ -14,7 +12,6 @@ import java.util.Locale;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class PracticeFormPage {
     private SelenideElement firstNameInput = $("#firstName"),

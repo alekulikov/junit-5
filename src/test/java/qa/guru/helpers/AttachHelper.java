@@ -38,7 +38,7 @@ public class AttachHelper {
                     String.join("\n", Selenide.getWebDriverLogs(BROWSER))
             );
         } catch (UnsupportedCommandException e) {
-            e.printStackTrace();
+            System.out.println("Unsupported command: " + e.getMessage());
         }
     }
 

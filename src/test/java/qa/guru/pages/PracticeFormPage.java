@@ -38,7 +38,6 @@ public class PracticeFormPage {
     public PracticeFormPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        ((RemoteWebDriver) getWebDriver()).setFileDetector(new LocalFileDetector());
 
         return this;
     }

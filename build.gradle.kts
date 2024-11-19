@@ -73,7 +73,7 @@ tasks.withType<Test> {
                 TestLogEvent.STARTED, TestLogEvent.SKIPPED, TestLogEvent.FAILED,
                 TestLogEvent.STANDARD_ERROR, TestLogEvent.STANDARD_OUT
             )
-            exceptionFormat = TestExceptionFormat.FULL
+            exceptionFormat = TestExceptionFormat.SHORT
         }
     }
 }

@@ -1,5 +1,6 @@
 package qa.guru.helpers;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -44,7 +45,7 @@ public class AttachHelper {
     }
 
     public static URL getVideoUrl() {
-        String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId() + ".mp4";
+        String videoUrl = "https://" + Configuration.remote + "/video/" + sessionId() + ".mp4";
         try {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {

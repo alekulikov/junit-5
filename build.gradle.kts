@@ -56,9 +56,14 @@ tasks.withType<JavaCompile> {
 }
 
 tasks.withType<Test> {
+    systemProperties(
+        System.getProperties()
+            .mapKeys { it.key.toString() }
+            .mapValues { it.value?.toString() ?: "" }
+    )
     useJUnitPlatform {
-        if (project.hasProperty("includeTags")) {
-            includeTags(project.property("includeTags").toString())
+        System.getProperty("includeTags")?.let {
+            includeTags(it)
         }
     }
 

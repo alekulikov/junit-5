@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.UnsupportedCommandException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,10 +32,14 @@ public class AttachHelper {
     }
 
     public static void browserConsoleLogs() {
-        attachAsText(
-                "Browser console logs",
-                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
-        );
+        try {
+            attachAsText(
+                    "Browser console logs",
+                    String.join("\n", Selenide.getWebDriverLogs(BROWSER))
+            );
+        } catch (UnsupportedCommandException e) {
+            e.printStackTrace();
+        }
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")

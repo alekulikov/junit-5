@@ -16,7 +16,7 @@ import static qa.guru.helpers.AttachHelper.*;
 public class TestBase {
 
     @BeforeAll
-    static void beforeAll() {
+    static void setup() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "chrome_126").split("_")[1];
